@@ -33,19 +33,21 @@ button{font-family:inherit;cursor:pointer}
 .slogan b{background:var(--white);color:var(--magenta);border-radius:999px;padding:0 10px;font-size:14px}
 
 /* 標籤列 */
-.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--white);border-bottom:3px solid var(--pink-band)}
-.tabs .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-block:0}
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--white);border-bottom:4px solid var(--pc,var(--pink-band));transition:border-color .2s}
+.tabs .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;padding-block:8px 0}
 .tabs .wrap::-webkit-scrollbar{display:none}
-.tab{flex:0 0 auto;border:0;background:none;padding:14px 18px 11px;font-size:16px;font-weight:700;color:var(--ink-soft);letter-spacing:.12em;border-bottom:4px solid transparent;margin-bottom:-3px}
-.tab[aria-selected="true"]{color:var(--magenta);border-bottom-color:var(--magenta)}
-.tab .n{display:inline-block;min-width:20px;margin-left:4px;padding:0 6px;border-radius:999px;background:var(--magenta);color:var(--white);font-size:12px;letter-spacing:0;line-height:20px}
+.tab{flex:1 1 0;border:0;background:var(--white);background:color-mix(in srgb,var(--tc) 9%,var(--white));padding:13px 14px 11px;font-size:16px;font-weight:700;color:var(--tc);letter-spacing:.1em;border-top:3px solid var(--tc);border-radius:8px 8px 0 0;white-space:nowrap}
+.tab[aria-selected="true"]{background:var(--tc);color:var(--white)}
+.tab:hover{filter:brightness(.97)}
+.esg-pre{margin-right:2px}
+.tab .n{display:inline-block;min-width:20px;margin-left:4px;padding:0 6px;border-radius:999px;background:var(--price-red);color:var(--white);font-size:12px;letter-spacing:0;line-height:20px}
 
 main{padding-block:28px 120px}
 .panel{display:grid;gap:36px}
 
 /* 段落標題：型錄風 */
-.sec-title{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--line);padding-bottom:8px}
-.sec-title h2{font-family:var(--display);font-size:clamp(22px,3.4vw,28px);color:var(--magenta);letter-spacing:.08em}
+.sec-title{border-bottom-color:var(--pc-soft,var(--line))!important;display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:2px solid var(--line);padding-bottom:8px}
+.sec-title h2{font-family:var(--display);font-size:clamp(22px,3.4vw,28px);color:var(--pc,var(--magenta));letter-spacing:.08em}
 .sec-title p{margin:0;color:var(--ink-soft);font-size:14px}
 
 /* 主視覺 */
@@ -132,7 +134,7 @@ main{padding-block:28px 120px}
 /* 商品卡 */
 .group{display:grid;gap:14px}
 .group h3{font-family:var(--display);font-size:20px;color:var(--ink);letter-spacing:.08em;display:flex;align-items:center;gap:10px}
-.group h3::before{content:"";width:10px;height:10px;background:var(--magenta);transform:rotate(45deg)}
+.group h3::before{content:"";width:10px;height:10px;background:var(--pc,var(--magenta));transform:rotate(45deg)}
 .group h3 small{font-family:var(--body);font-size:13px;color:var(--ink-soft);font-weight:500;letter-spacing:0}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
 .card{background:var(--white);border-radius:6px;overflow:hidden;display:grid;grid-template-rows:auto 1fr;box-shadow:0 1px 0 var(--line)}
@@ -227,8 +229,9 @@ footer .tel{font-weight:700;color:var(--ink)}
   body{font-size:15px}
   .topband .wrap{padding-block:8px;justify-content:center;text-align:center}
   .org{font-size:15px} .slogan{font-size:13px}
-  .tabs .wrap{display:grid;grid-template-columns:repeat(6,1fr);gap:0;overflow:visible}
-  .tab{position:relative;padding:12px 0 9px;font-size:13px;letter-spacing:0;text-align:center;white-space:nowrap}
+  .tabs .wrap{display:grid;grid-template-columns:repeat(6,1fr);gap:3px;overflow:visible;padding-block:6px 0}
+  .tab{position:relative;padding:9px 0 7px;font-size:13px;letter-spacing:0;text-align:center;white-space:nowrap;border-radius:6px 6px 0 0;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.25;min-height:44px}
+  .esg-pre{margin:0;font-size:10.5px;letter-spacing:.06em;line-height:1}
   .tab .n{position:absolute;top:2px;right:0;margin:0;min-width:18px;line-height:18px;font-size:11px;padding:0 4px}
   main{padding-block:18px 110px}
   .panel{gap:26px}
@@ -274,7 +277,7 @@ footer .tel{font-weight:700;color:var(--ink)}
   .cartbar .wrap{padding-block:8px}
   .cartbar b{font-size:18px}
 }
-@media (max-width:360px){.grid{grid-template-columns:1fr}.tab{font-size:13px}}
+@media (max-width:360px){.grid{grid-template-columns:1fr}.tab{font-size:12px}}
 
 /* ---- 圖示元件 ---- */
 .ico{width:48px;height:48px;border-radius:50%;background:var(--ic,var(--rose));display:grid;place-items:center;color:var(--white);flex:0 0 auto}
@@ -476,12 +479,12 @@ a.btn{text-decoration:none;display:inline-block}
 </div></div>
 
 <nav class="tabs" aria-label="型錄分類"><div class="wrap" role="tablist">
-  <button class="tab" role="tab" data-tab="story">品牌故事</button>
-  <button class="tab" role="tab" data-tab="gift">新春好禮</button>
-  <button class="tab" role="tab" data-tab="share">團圓共享</button>
-  <button class="tab" role="tab" data-tab="feast">團圓年菜</button>
-  <button class="tab" role="tab" data-tab="corporate">企業採購</button>
-  <button class="tab" role="tab" data-tab="order">訂購試算<span class="n" id="tabCount" hidden>0</span></button>
+  <button class="tab" role="tab" data-tab="story" style="--tc:#d63a7e">品牌故事</button>
+  <button class="tab" role="tab" data-tab="gift" style="--tc:#cf2f2a">新春好禮</button>
+  <button class="tab" role="tab" data-tab="share" style="--tc:#c8601a">團圓共享</button>
+  <button class="tab" role="tab" data-tab="feast" style="--tc:#8a5a2b">團圓年菜</button>
+  <button class="tab" role="tab" data-tab="corporate" style="--tc:#2e7d4f"><span class="esg-pre">ESG</span>企業採購</button>
+  <button class="tab" role="tab" data-tab="order" style="--tc:#2f64b0">訂購試算<span class="n" id="tabCount" hidden>0</span></button>
 </div></nav>
 
 <main class="wrap">
@@ -584,7 +587,7 @@ a.btn{text-decoration:none;display:inline-block}
     </div>
   </section>
 
-  <!-- 企業採購 -->
+  <!-- ESG企業採購 -->
   <section class="panel" id="p-corporate" role="tabpanel" hidden>
     <div class="corp-hero">
       <p class="corp-eyebrow">【ESG 採購提案】</p>
@@ -905,7 +908,7 @@ function buildText(r){
 
 let current='story';
 function show(t){if(!['story','gift','share','feast','corporate','order'].includes(t))t='story';current=t;
-  document.querySelectorAll('.tab').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===t));
+  document.querySelectorAll('.tab').forEach(b=>{const on=b.dataset.tab===t;b.setAttribute('aria-selected',on);if(on){const c=b.style.getPropertyValue('--tc');document.documentElement.style.setProperty('--pc',c);document.documentElement.style.setProperty('--pc-soft',`color-mix(in srgb, ${c} 30%, transparent)`)}});
   document.querySelectorAll('[role=tabpanel]').forEach(p=>p.hidden=p.id!=='p-'+t);
   renderCart();}
 document.addEventListener('click',e=>{
